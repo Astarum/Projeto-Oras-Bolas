@@ -72,12 +72,18 @@ int main() {
 
   // fecha o arquivo
   fclose(arquivo);
-
-  puts("Digite os valores de X e Y do robo:");
-  // receber os valores iniciais do robo
-  scanf("%lf %lf", &inicioX, &inicioY);
-
- 
+  int liberar=0;
+  
+  while (liberar == 0){
+    puts("Digite os valores de X e Y do robo:");
+    // receber os valores iniciais do robo
+    scanf("%lf %lf", &inicioX, &inicioY);
+    if (inicioX >=0 && inicioX <=9 && inicioY >=0 && inicioY <=6){
+      liberar = 1;
+    }else{
+      printf("Os valores de X e Y devem estar entre 0 e 9, e 0 e 6, respectivamente.\n");
+    }
+  }
   // posição inicial do robo
   robo.roboX = inicioX;
   robo.roboY = inicioY;
@@ -85,36 +91,16 @@ int main() {
   robo.velTotal = 0;
   
 
+  char* nome_arquivo = "logs.txt";
  
   no* lista = inicializa();
   lista = insere_dados(lista,bola.bolaX,bola.bolaY,robo.roboX,robo.roboY,0,raioTotal,acel,tempo,robo.velTotal,0,0);
+  //criar_logs("logs.txt",lista,inicioX,inicioY,bola.bolaX[0],bola.bolaY[0]);
+  limpa_lista(lista);
   
-
-    
-  // cria o arquivo que mostra informações referentes ao ponto de encontro
-  /*
-  logs = fopen("logs.txt", "a");
-  fputs("Informações referentes ao encontro do robo com a bola\n", logs);
-  fputs(
-      "--------------------------------------------------------------------\n",
-      logs);
-  fprintf(logs, "Posição inicial do robo: %.2lf,%.2lf\n", inicioX, inicioY);
-  fprintf(logs, "Posição inicial da bola: %.2lf,%.2lf\n", bola.bolaX[0],
-          bola.bolaY[0]);
-  fprintf(logs, "Enconstou na bola na posição: X: %.2lf, Y: %.2lf\n",
-          robo.roboX[i], robo.roboY[i]);
-  fprintf(logs, "Posição da bola: X: %.2lf, Y: %.2lf\n", bola.bolaX[i],
-          bola.bolaY[i]);
-  fprintf(logs, "Instante de tempo: %.2lf s\n", tempo[i]);
-  fprintf(logs, "Velocidade total do robo no momento do encontro: %.5lf m/s\n",
-          velTot);
-  fprintf(logs, "Aceleração total do robo no momento do encontro: %.5lf m/s²\n",
-          aceTot);
-
-  fputs("----------------------------------------------------------------\n",
-        logs);
-  fclose(logs);
-*/
+  
+  
+  
   // libera a memória referente a todos vetores de alocação dinâmica
   free(bola.bolaX);
   free(bola.bolaY);
@@ -127,3 +113,5 @@ int main() {
 
   return 0;
 }
+
+

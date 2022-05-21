@@ -3,6 +3,8 @@
 #include "geral.h"
 #include <math.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 
@@ -64,13 +66,7 @@ double angulo(double *bolaX, double *bolaY, double roboX,double roboY, int i) {
 
 //Funções referentes ao arquivo robo.h
 //--------------------------------------------
-/*
-void raioDecomp(double angulo,int i, double *raioX,double *raioY,double raioTotal){
-  angulo = angulo * PI_ / 180;
-  //printf("%lf",angulo);
-  raioX[i] = raioTotal * cos(angulo);
-  raioY[i] = raioTotal * sin(angulo);
-}*/
+
 double raioDecompX(double angulo,int i,double raioTotal){
   double raioX;
   angulo = angulo * PI_ / 180;
@@ -128,19 +124,7 @@ void replaceVirgula(char *string, char virgula, char ponto) {
     }
   }
 }
-/*
-void quadrante (double bolaX,double bolaY,double roboX,double roboY,int i,double *ang){
-  if (bolaX<roboX){
-    if (bolaY<roboY || bolaY>roboY){
-      ang[i] += 180;
-    }
-  }
-  else if(bolaX>roboX && bolaY<roboY){
-    ang[i]+=360;
-  }
-  
-}
-*/
+
 
 //--------------------------------------------
 
@@ -209,8 +193,12 @@ novo_conjunto_dados->deslocamento_roboX = verifica_interceptacao_emX(novo_conjun
 novo_conjunto_dados->deslocamento_roboY = verifica_interceptacao_emY(novo_conjunto_dados->raio_decompostoY,bolaY,novo_conjunto_dados->deslocamento_roboY,i,primeiro_raioY);
     
 novo_conjunto_dados->dist = distancia(bolaX,bolaY,novo_conjunto_dados->deslocamento_roboX,novo_conjunto_dados->deslocamento_roboY,i);
-
-    // printf("aY atual é %lf\n", aY[i]);
+novo_conjunto_dados->roboX =   novo_conjunto_dados->deslocamento_roboX;
+novo_conjunto_dados->roboY =   novo_conjunto_dados->deslocamento_roboY;  
+novo_conjunto_dados->bolaX =   bolaX[i];
+novo_conjunto_dados->bolaY =   bolaY[i];  
+novo_conjunto_dados->tempo =   tempo[i];   
+   
     puts("------------------------------------------");
     printf("A bola está em (%.2lf,%.2lf)\n", bolaX[i], bolaY[i]);
     printf("O robo está em (%.2lf,%.2lf)\n", posicao_atualX,
@@ -235,25 +223,61 @@ novo_conjunto_dados->prox = insere_dados(l,bolaX ,bolaY,novo_conjunto_dados->des
   }
 
   
- 
+ return novo_conjunto_dados;
   
 }
 
 no* inicializa(){
   return NULL;
 }
-
-/*no* insere_inicio(no* l,int i){
-    int num;
-    scanf("%d", &num);
-    no*novo = (no*)malloc(sizeof(no));
-    novo->conteudo = num;
-    
-    if (i==1){
-        novo->prox = NULL;
-    }else{
-       novo->prox = insere_inicio(l,i-1); 
+//Função que destroi a lista
+void limpa_lista(no* lista){
+    no* atual = (no*)malloc(sizeof(no));
+    if (lista == NULL){
+      printf("Limpeza concluída!!");
+      return;
     }
+    if (lista->prox == NULL){
+      printf("Ultimo tempo = %.2lf\n",lista->tempo);
+    }
+  
+    atual = lista->prox;
+    free(lista);
+    limpa_lista(atual);
     
-    return novo;
-}*/
+}
+//Função que cria o arquivo de logs (não está funcionando)
+void cria_logs(char *nome_arquivo,no* lista,double inicioX,double inicioY,double bolaX,double bolaY){
+  FILE *logs;
+  int i;
+  logs = fopen(nome_arquivo, "a");
+  // cria o arquivo que mostra informações referentes ao ponto de encontro
+  while(lista != NULL){
+   if(i==0){
+  fputs("Informações referentes ao encontro do robo com a bola\n", logs);
+  fputs("--------------------------------------------------------------------\n",
+      logs);
+  fprintf(logs, "Posição inicial do robo: %.2lf,%.2lf\n", inicioX, inicioY);
+  fprintf(logs, "Posição inicial da bola: %.2lf,%.2lf\n", bolaX,
+          bolaY);
+     i=1;
+   }  
+  if (lista->prox == NULL){
+      fprintf(logs, "Enconstou na bola na posição: X: %.2lf, Y: %.2lf\n",
+          lista->roboX, lista->roboY);
+  fprintf(logs, "Posição da bola: X: %.2lf, Y: %.2lf\n", lista->bolaX,
+          lista->bolaY);
+  fprintf(logs, "Instante de tempo: %.2lf s\n", lista->tempo);
+  fprintf(logs, "Velocidade total do robo no momento do encontro: %.5lf m/s\n",
+          lista->velocidade_total);
+  fprintf(logs, "Distância entre os dois no momento da interceptação: %.2lf\n",
+          lista->dist);
+
+  fputs("----------------------------------------------------------------\n",
+        logs);
+  }  
+ lista = lista->prox; 
+ }    
+  fclose(logs);
+    
+}
