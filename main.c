@@ -54,14 +54,17 @@ int main() {
     printf("Não foi possível abrir o arquivo");
     return 1;
   }
-  // enquanto a condição não for falsa, ele executa o for
-  // fgets transfere cada linha do arquivo para de um vetor com tamanho max 25
-  // chars, dentro da matriz de strings
-  for (j = 0; fgets(valores[j], 25, arquivo); j++) {
-    // função para substituir a virgula dos números por '.'
-    replaceVirgula(valores[j], ',', '.');
+  
+  for (j = 0;j<MAX ; j++) {
+     // fgets transfere cada linha do arquivo para de um vetor com tamanho max 25
+    // chars, dentro da matriz de strings
+    fgets(valores[j], 25, arquivo);
+    
+    
     // se os valores forem diferente de 'NULL' (ou linha vazia)
     if (valores[j] != NULL) {
+      // função para substituir a virgula dos números por '.'
+      replaceVirgula(valores[j], ',', '.');
       // sscanf coloca cada valor dentro da sua respectiva variavel, já fazendo
       // a troca do valor de string para double
       sscanf(valores[j], "%lf %lf %lf\n", tempo + j, bola.bolaX + j,
@@ -96,6 +99,41 @@ int main() {
   no* lista = inicializa();
   lista = insere_dados(lista,bola.bolaX,bola.bolaY,robo.roboX,robo.roboY,0,raioTotal,acel,tempo,robo.velTotal,0,0);
   //criar_logs("logs.txt",lista,inicioX,inicioY,bola.bolaX[0],bola.bolaY[0]);
+
+  //variável para a primeira interação da lista
+  int primeira=0;
+  // cria o arquivo que mostra informações referentes ao ponto de encontro
+  logs = fopen(nome_arquivo, "a");
+  
+  while(lista != NULL){
+   if(primeira==0){
+  fputs("Informações referentes ao encontro do robo com a bola\n", logs);
+  fputs("--------------------------------------------------------------------\n",
+      logs);
+  fprintf(logs, "Posição inicial do robo: %.2lf,%.2lf\n", lista->roboX, lista->roboY);
+  fprintf(logs, "Posição inicial da bola: %.2lf,%.2lf\n", lista->bolaX ,
+          lista->bolaY );
+     primeira=1;
+   }  
+  if (lista->prox == NULL){
+      fprintf(logs, "Enconstou na bola na posição: X: %.2lf, Y: %.2lf\n",
+          lista->roboX, lista->roboY);
+  fprintf(logs, "Posição da bola: X: %.2lf, Y: %.2lf\n", lista->bolaX,
+          lista->bolaY);
+  fprintf(logs, "Instante de tempo: %.2lf s\n", lista->tempo);
+  fprintf(logs, "Velocidade total do robo no momento do encontro: %.5lf m/s\n",
+          lista->velocidade_total);
+  fprintf(logs, "Distância entre os dois no momento da interceptação: %.2lf\n",
+          lista->dist);
+
+  fputs("----------------------------------------------------------------\n",
+        logs);
+  }  
+ lista = lista->prox; 
+ }    
+  fclose(logs);
+
+  
   limpa_lista(lista);
   
   

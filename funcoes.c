@@ -247,6 +247,7 @@ void limpa_lista(no* lista){
     
 }
 //Função que cria o arquivo de logs (não está funcionando)
+/*
 void cria_logs(char *nome_arquivo,no* lista,double inicioX,double inicioY,double bolaX,double bolaY){
   FILE *logs;
   int i;
@@ -281,3 +282,4 @@ void cria_logs(char *nome_arquivo,no* lista,double inicioX,double inicioY,double
   fclose(logs);
     
 }
+*/
