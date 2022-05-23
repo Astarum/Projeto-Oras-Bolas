@@ -11,6 +11,9 @@ int main() {
   // ponteiro para o arquivo
   FILE *arquivo;
   FILE *logs;
+  FILE *deslocamento_tempo;
+  FILE *distancia_relativa;
+  
 
   // instanciando a struct robo
   robo robo;
@@ -62,14 +65,14 @@ int main() {
     
     
     // se os valores forem diferente de 'NULL' (ou linha vazia)
-    if (valores[j] != NULL) {
+    if (feof(arquivo)==0) {
       // função para substituir a virgula dos números por '.'
       replaceVirgula(valores[j], ',', '.');
       // sscanf coloca cada valor dentro da sua respectiva variavel, já fazendo
       // a troca do valor de string para double
       sscanf(valores[j], "%lf %lf %lf\n", tempo + j, bola.bolaX + j,
              bola.bolaY + j);
-      // printf("%lf %lf %lf\n",tempo[j],bola.bolaX[j],bola.bolaY[j]);
+      //printf("%lf %lf %lf\n",tempo[j],bola.bolaX[j],bola.bolaY[j]);
     }
   }
 
@@ -104,8 +107,18 @@ int main() {
   int primeira=0;
   // cria o arquivo que mostra informações referentes ao ponto de encontro
   logs = fopen(nome_arquivo, "a");
-  
+  deslocamento_tempo = fopen("grafico_deslocamento_tempo.txt","w");
+  distancia_relativa = fopen("grafico_distancia_relativa.txt","w");
   while(lista != NULL){
+  fprintf(deslocamento_tempo, "%lf %lf %lf %lf %lf\n", lista->bolaX ,
+          lista->bolaY,lista->roboX,lista->roboY,lista->tempo);
+  fprintf(distancia_relativa, "%lf %lf\n", lista->dist, lista->tempo);
+
+
+
+
+
+    
    if(primeira==0){
   fputs("Informações referentes ao encontro do robo com a bola\n", logs);
   fputs("--------------------------------------------------------------------\n",
@@ -132,7 +145,9 @@ int main() {
  lista = lista->prox; 
  }    
   fclose(logs);
-
+    char * commandsForGnuplot[] = {"set title \"TITLEEEEE\"", "plot 'grafico_distancia_relativa.txt'"};
+    FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
+    fprintf(gnuplotPipe, "%s \n", commandsForGnuplot[0]);
   
   limpa_lista(lista);
   

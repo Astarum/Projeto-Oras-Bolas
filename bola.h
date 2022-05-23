@@ -1,7 +1,7 @@
 #ifndef BOLA.H
 #define BOLA.H
 #define raioBola 0.02
-#define MAX 1002
+#define MAX 1001
 #define PI_ 3.14159265358979323
 
 typedef struct{

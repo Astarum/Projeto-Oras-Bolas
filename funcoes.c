@@ -166,7 +166,8 @@ no *insere_dados(no*l,double *bolaX,double *bolaY,double roboX,double roboY,int 
   double posicao_atualY = roboY;
   //angulo auxiliar para o calculo da aceleração
   double auxiliar_angulo = 0;
-  
+  double velocidade_anteriorX = 0;
+  double velocidade_anteriorY = 0;
   
   novo_conjunto_dados->angulo = angulo(bolaX,bolaY,roboX,roboY,i);
   novo_conjunto_dados->raio_decompostoX = raioDecompX(novo_conjunto_dados->angulo,i, raioTotal );
@@ -180,13 +181,16 @@ no *insere_dados(no*l,double *bolaX,double *bolaY,double roboX,double roboY,int 
   
   novo_conjunto_dados->aceleracao_roboX = a * cos(auxiliar_angulo);
   novo_conjunto_dados->aceleracao_roboY = a * sin(auxiliar_angulo);
+  velocidade_anteriorX = velocidade_anteriorTotal * cos(auxiliar_angulo);
+  velocidade_anteriorY = velocidade_anteriorTotal * sin(auxiliar_angulo);
+  
   
   novo_conjunto_dados->velocidade_roboX = velRoboX(novo_conjunto_dados->aceleracao_roboX,tempo[i],velocidade_anteriorTotal,novo_conjunto_dados->angulo);
   novo_conjunto_dados->velocidade_roboY = velRoboY(novo_conjunto_dados->aceleracao_roboY,tempo[i],velocidade_anteriorTotal,novo_conjunto_dados->angulo);
   novo_conjunto_dados->velocidade_total = velTotal(novo_conjunto_dados->velocidade_roboX,novo_conjunto_dados->velocidade_roboY);
   
-  novo_conjunto_dados->deslocamento_roboX = deslocamentoRoboX(posicao_atualX,novo_conjunto_dados->aceleracao_roboX,novo_conjunto_dados->velocidade_roboX,tempo[i]);
-novo_conjunto_dados->deslocamento_roboY = deslocamentoRoboY(posicao_atualY,novo_conjunto_dados->aceleracao_roboY,novo_conjunto_dados->velocidade_roboY,tempo[i]);
+  novo_conjunto_dados->deslocamento_roboX = deslocamentoRoboX(posicao_atualX,novo_conjunto_dados->aceleracao_roboX,velocidade_anteriorX,tempo[i]);
+novo_conjunto_dados->deslocamento_roboY = deslocamentoRoboY(posicao_atualY,novo_conjunto_dados->aceleracao_roboY,velocidade_anteriorY,tempo[i]);
 
 novo_conjunto_dados->deslocamento_roboX = verifica_interceptacao_emX(novo_conjunto_dados->raio_decompostoX,bolaX,novo_conjunto_dados->deslocamento_roboX,i,primeiro_raioX);
 
