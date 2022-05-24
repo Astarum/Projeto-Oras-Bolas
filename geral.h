@@ -1,16 +1,21 @@
-
-#ifndef GERAL.H
-#define GERAL.H
+#ifndef GERAL_H
+#define GERAL_H 
 
 typedef struct reg no;
 no* inicializa();
 //lista recursiva
 no* insere_dados(no* lista,double *bolaX,double *bolaY,double roboX,double roboY, int i,double raioTotal,double a,double *tempo,double velocidade_anteriorTotal,double primeiro_raioX,double primeiro_raioY);
+//destroi a lista
 void limpa_lista(no* lista);
+//verifica interceptacao em x
 double verifica_interceptacao_emX(double raioX,double *bolaX,double deslocaX,int i,double raioX_inicial);
+//verifica interceptacao em y
 double verifica_interceptacao_emY(double raioY,double *bolaY,double deslocaY,int i, double raioY_inicial);
-
-void criar_logs(char*logs,no*lista,double inicioX,double inicioY,double bolaX,double bolaY);
+//troca '.' por ','
+void replaceVirgula(char*,char,char);
+void criar_logs(char*logs,no*lista,double inicioX,double inicioY,double *bolaX,double *bolaY,FILE *deslocamento_tempo,
+FILE *distancia_relativa,FILE *deslocamento_RoboBola,FILE *velocidade_RoboBola_tempo,FILE *aceleracao_RoboBola_tempo,double *velocidadeX,
+double *velocidadeY,double *aceleracaoX,double *aceleracaoY);
 
 struct reg{
   double dist;

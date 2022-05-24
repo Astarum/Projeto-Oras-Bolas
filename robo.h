@@ -16,7 +16,7 @@ double velTotal(double velX,double velY);
 //void deslocamentoRobo (double *,double *,double ,double,double ,double ,int ,double,double*,double*,double*,double*);
 double deslocamentoRoboX(double deslX,double acelX,double velX,double tempo);
 double deslocamentoRoboX(double deslY,double acelY,double velY,double tempo); 
-void replaceVirgula(char*,char,char);
+
 //void quadrante (double ,double ,double ,double ,int ,double *);
 //void raioDecomp(double,int,double);
 double raioDecompX(double,int,double);

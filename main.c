@@ -3,16 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #include "bola.h"
 #include "robo.h"
 #include "geral.h"
+#include "funcoes.c"
 int main() {
 
-  // ponteiro para o arquivo
+  // ponteiro para ler o arquivo da bola
   FILE *arquivo;
-  FILE *logs;
+  //txt's para os graficos
   FILE *deslocamento_tempo;
+  FILE *deslocamento_RoboBola;
   FILE *distancia_relativa;
+  FILE *velocidade_RoboBola_tempo;
+  FILE *aceleracao_RoboBola_tempo;
   
 
   // instanciando a struct robo
@@ -49,7 +54,13 @@ int main() {
  
   bola.bolaX = (double *)malloc(MAX * sizeof(double));
   bola.bolaY = (double *)malloc(MAX * sizeof(double));
+  bola.velocidadeX = (double *)malloc(MAX * sizeof(double));
+  bola.velocidadeY = (double *)malloc(MAX * sizeof(double));
+  bola.aceleracaoX = (double *)malloc(MAX * sizeof(double));
+  bola.aceleracaoY = (double *)malloc(MAX * sizeof(double));
   tempo = (double *)malloc(MAX * sizeof(double));
+
+  
 
   // tratamento do arquivo
   arquivo = fopen("./infobola.txt", "r");
@@ -78,8 +89,11 @@ int main() {
 
   // fecha o arquivo
   fclose(arquivo);
+  //funcao que calcula a velocidade e a aceleracao da bola
+  velocidade_aceleracao(tempo,bola.velocidadeX,bola.velocidadeY,bola.aceleracaoX,bola.aceleracaoY);
+
+  //variavel para bloquear caso os valores de entrada nao estejam dentro dos valores corretos
   int liberar=0;
-  
   while (liberar == 0){
     puts("Digite os valores de X e Y do robo:");
     // receber os valores iniciais do robo
@@ -87,7 +101,7 @@ int main() {
     if (inicioX >=0 && inicioX <=9 && inicioY >=0 && inicioY <=6){
       liberar = 1;
     }else{
-      printf("Os valores de X e Y devem estar entre 0 e 9, e 0 e 6, respectivamente.\n");
+      printf("Os valores de X e Y devem estar entre 0 e 9 e 0 e 6, respectivamente.\n");
     }
   }
   // posição inicial do robo
@@ -96,59 +110,23 @@ int main() {
   // robo está parado
   robo.velTotal = 0;
   
-
+  //nome do arquivo de logs
   char* nome_arquivo = "logs.txt";
- 
+ //inicializa a lista
   no* lista = inicializa();
+  //insere os dados nela
   lista = insere_dados(lista,bola.bolaX,bola.bolaY,robo.roboX,robo.roboY,0,raioTotal,acel,tempo,robo.velTotal,0,0);
-  //criar_logs("logs.txt",lista,inicioX,inicioY,bola.bolaX[0],bola.bolaY[0]);
-
-  //variável para a primeira interação da lista
-  int primeira=0;
-  // cria o arquivo que mostra informações referentes ao ponto de encontro
-  logs = fopen(nome_arquivo, "a");
-  deslocamento_tempo = fopen("grafico_deslocamento_tempo.txt","w");
-  distancia_relativa = fopen("grafico_distancia_relativa.txt","w");
-  while(lista != NULL){
-  fprintf(deslocamento_tempo, "%lf %lf %lf %lf %lf\n", lista->bolaX ,
-          lista->bolaY,lista->roboX,lista->roboY,lista->tempo);
-  fprintf(distancia_relativa, "%lf %lf\n", lista->dist, lista->tempo);
-
-
-
-
-
-    
-   if(primeira==0){
-  fputs("Informações referentes ao encontro do robo com a bola\n", logs);
-  fputs("--------------------------------------------------------------------\n",
-      logs);
-  fprintf(logs, "Posição inicial do robo: %.2lf,%.2lf\n", lista->roboX, lista->roboY);
-  fprintf(logs, "Posição inicial da bola: %.2lf,%.2lf\n", lista->bolaX ,
-          lista->bolaY );
-     primeira=1;
-   }  
-  if (lista->prox == NULL){
-      fprintf(logs, "Enconstou na bola na posição: X: %.2lf, Y: %.2lf\n",
-          lista->roboX, lista->roboY);
-  fprintf(logs, "Posição da bola: X: %.2lf, Y: %.2lf\n", lista->bolaX,
-          lista->bolaY);
-  fprintf(logs, "Instante de tempo: %.2lf s\n", lista->tempo);
-  fprintf(logs, "Velocidade total do robo no momento do encontro: %.5lf m/s\n",
-          lista->velocidade_total);
-  fprintf(logs, "Distância entre os dois no momento da interceptação: %.2lf\n",
-          lista->dist);
-
-  fputs("----------------------------------------------------------------\n",
-        logs);
-  }  
- lista = lista->prox; 
- }    
-  fclose(logs);
-    char * commandsForGnuplot[] = {"set title \"TITLEEEEE\"", "plot 'grafico_distancia_relativa.txt'"};
-    FILE * gnuplotPipe = popen ("gnuplot -persistent", "w");
-    fprintf(gnuplotPipe, "%s \n", commandsForGnuplot[0]);
+  //cria todos arquivos: logs e graficos
+  cria_logs(nome_arquivo,lista,inicioX,inicioY,bola.bolaX,bola.bolaY,deslocamento_tempo,distancia_relativa,deslocamento_RoboBola,
+  velocidade_RoboBola_tempo,aceleracao_RoboBola_tempo,bola.velocidadeX,bola.velocidadeY,bola.aceleracaoX,bola.aceleracaoY);
   
+  //executa os scripts do gnuplot
+  system("gnuplot ./gnuplot-scripts/script1.p");
+  system("gnuplot ./gnuplot-scripts/script2.p");
+  system("gnuplot ./gnuplot-scripts/script3.p");
+  system("gnuplot ./gnuplot-scripts/script4.p");
+  system("gnuplot ./gnuplot-scripts/script5.p");
+  //destroi a lista
   limpa_lista(lista);
   
   
@@ -158,8 +136,12 @@ int main() {
   free(bola.bolaX);
   free(bola.bolaY);
   free(tempo);
- 
-  for (i = 0; i < j; i++) {
+  free(bola.velocidadeX);
+  free(bola.velocidadeY);
+  free(bola.aceleracaoX);
+  free(bola.aceleracaoY);
+  //libera a matriz que guardou as linhas do arquivo inicial
+  for (i = 0; i < MAX; i++) {
     free(valores[i]);
   }
   free(valores);
