@@ -232,8 +232,8 @@ no *insere_dados(no*l,double *bolaX,double *bolaY,double roboX,double roboY,int 
   
   //calculo da velocidade ao fim do movimento do robo
   //calcula X e Y dessa velocidade e faz o calculo do modulo para descobrir a total
-  novo_conjunto_dados->velocidade_roboX = velRoboX(novo_conjunto_dados->aceleracao_roboX,tempo[i],velocidade_anteriorTotal,novo_conjunto_dados->angulo);
-  novo_conjunto_dados->velocidade_roboY = velRoboY(novo_conjunto_dados->aceleracao_roboY,tempo[i],velocidade_anteriorTotal,novo_conjunto_dados->angulo);
+  novo_conjunto_dados->velocidade_roboX = velRoboX(novo_conjunto_dados->aceleracao_roboX,tempo_entre_dados,velocidade_anteriorTotal,novo_conjunto_dados->angulo);
+  novo_conjunto_dados->velocidade_roboY = velRoboY(novo_conjunto_dados->aceleracao_roboY,tempo_entre_dados,velocidade_anteriorTotal,novo_conjunto_dados->angulo);
   novo_conjunto_dados->velocidade_total = velTotal(novo_conjunto_dados->velocidade_roboX,novo_conjunto_dados->velocidade_roboY);
   //se a total for maior ou igual a velMax, logo, essa velocidade é limitada por velMax
   //assim como suas componentes
@@ -245,8 +245,8 @@ no *insere_dados(no*l,double *bolaX,double *bolaY,double roboX,double roboY,int 
 
   }
   //calcula o movimento do robo em X e Y
-  novo_conjunto_dados->deslocamento_roboX = deslocamentoRoboX(posicao_atualX,novo_conjunto_dados->aceleracao_roboX,velocidade_anteriorX,tempo[i]);
-  novo_conjunto_dados->deslocamento_roboY = deslocamentoRoboY(posicao_atualY,novo_conjunto_dados->aceleracao_roboY,velocidade_anteriorY,tempo[i]);
+  novo_conjunto_dados->deslocamento_roboX = deslocamentoRoboX(posicao_atualX,novo_conjunto_dados->aceleracao_roboX,velocidade_anteriorX,tempo_entre_dados);
+  novo_conjunto_dados->deslocamento_roboY = deslocamentoRoboY(posicao_atualY,novo_conjunto_dados->aceleracao_roboY,velocidade_anteriorY,tempo_entre_dados);
   //corrige o valor se necessario
   novo_conjunto_dados->deslocamento_roboX = verifica_interceptacao_emX(novo_conjunto_dados->raio_decompostoX,bolaX,novo_conjunto_dados->deslocamento_roboX,i,primeiro_raioX);
   novo_conjunto_dados->deslocamento_roboY = verifica_interceptacao_emY(novo_conjunto_dados->raio_decompostoY,bolaY,novo_conjunto_dados->deslocamento_roboY,i,primeiro_raioY);

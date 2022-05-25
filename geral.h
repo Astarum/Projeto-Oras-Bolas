@@ -1,6 +1,7 @@
 #ifndef GERAL_H
 #define GERAL_H 
 
+
 typedef struct reg no;
 no* inicializa();
 //lista recursiva

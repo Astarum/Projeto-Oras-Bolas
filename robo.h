@@ -1,8 +1,9 @@
 #ifndef ROBO_H
 #define ROBO_H
-#define velMax 2.8
-#define acel 0.1
+#define velMax 2.3
+#define acel 1.5
 #define raioRobo 0.09
+#define tempo_entre_dados 0.02
 
 typedef struct{
   double velTotal,roboX,roboY;
