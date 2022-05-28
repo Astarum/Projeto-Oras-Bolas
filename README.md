@@ -1,6 +1,6 @@
 # Projeto Ora Bolas -> Feito em C
 
-Nosso projeto consiste no robô interceptar a bola. Para realizar isso, aplicamos fórmulas de física em todos os movimentos da bola e do robô, inclusive nos movimentos de recúo da bola após a interceptação.
+Nosso projeto consiste no robô interceptar a bola. Para realizar isso, aplicamos fórmulas de física em todos os movimentos da bola e do robô.
 
 Utilizamos lista ligada em C para registrar cada instante de tempo do robô e da bola como um elemento da lista, e o programa arquivos de logs com informações como velocidade e instante de tempo referentes as interceptações da bola, além disso, ele também cria um arquivo .txt, utilizado para a animação feita com javascript no canvas.
 
