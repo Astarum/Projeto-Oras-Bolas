@@ -18,6 +18,7 @@ int main() {
   FILE *distancia_relativa;
   FILE *velocidade_RoboBola_tempo;
   FILE *aceleracao_RoboBola_tempo;
+  FILE *instrucoes_javascript;
   
 
   // instanciando a struct robo
@@ -94,12 +95,19 @@ int main() {
 
   //variavel para bloquear caso os valores de entrada nao estejam dentro dos valores corretos
   int liberar=0;
+  double dist_inicial=0;
   while (liberar == 0){
     puts("Digite os valores de X e Y do robo:");
     // receber os valores iniciais do robo
     scanf("%lf %lf", &inicioX, &inicioY);
     if (inicioX >=0 && inicioX <=9 && inicioY >=0 && inicioY <=6){
-      liberar = 1;
+      
+      dist_inicial = distancia(bola.bolaX,bola.bolaY,inicioX,inicioY,0);
+      if (dist_inicial > raioTotal){
+        liberar = 1;
+      }else{
+        printf("O robo esta com uma de distancia de %.2lf da bola, ou seja, ja interceptou! Por favor, coloque outros valores!\n",dist_inicial);
+      }
     }else{
       printf("Os valores de X e Y devem estar entre 0 e 9 e 0 e 6, respectivamente.\n");
     }
@@ -118,7 +126,7 @@ int main() {
   lista = insere_dados(lista,bola.bolaX,bola.bolaY,robo.roboX,robo.roboY,0,raioTotal,acel,tempo,robo.velTotal,0,0);
   //cria todos arquivos: logs e graficos
   cria_logs(nome_arquivo,lista,inicioX,inicioY,bola.bolaX,bola.bolaY,deslocamento_tempo,distancia_relativa,deslocamento_RoboBola,
-  velocidade_RoboBola_tempo,aceleracao_RoboBola_tempo,bola.velocidadeX,bola.velocidadeY,bola.aceleracaoX,bola.aceleracaoY);
+  velocidade_RoboBola_tempo,aceleracao_RoboBola_tempo,bola.velocidadeX,bola.velocidadeY,bola.aceleracaoX,bola.aceleracaoY,instrucoes_javascript);
   
   //executa os scripts do gnuplot
   system("gnuplot ./gnuplot-scripts/script1.p");

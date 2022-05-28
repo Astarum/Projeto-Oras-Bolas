@@ -125,7 +125,7 @@ double velTotal(double velX,double velY){
 //calcula o deslocamento do robo em X
 double deslocamentoRoboX(double deslX, double acelX,double velocidadeX, double tempo) {
   double auxiliarX;
-  auxiliarX = deslX + velocidadeX * tempo + 0.5 * acelX * tempo;
+  auxiliarX = deslX + velocidadeX * tempo + 0.5 * acelX * tempo*tempo;
 
   return auxiliarX;
   
@@ -135,7 +135,7 @@ double deslocamentoRoboX(double deslX, double acelX,double velocidadeX, double t
 double deslocamentoRoboY(double deslY, double acelY,double velocidadeY,double tempo) {
   double auxiliarY;
   
-  auxiliarY = deslY + velocidadeY * tempo + 0.5 * acelY * tempo;
+  auxiliarY = deslY + velocidadeY * tempo + 0.5 * acelY * tempo*tempo;
   return auxiliarY;
 }
 //troca virgula por ponto
@@ -315,7 +315,7 @@ void limpa_lista(no* lista){
 
 void cria_logs(char *nome_arquivo,no* lista,double inicioX,double inicioY,double *bolaX,double *bolaY,FILE *deslocamento_tempo,
 FILE *distancia_relativa,FILE *deslocamento_RoboBola,FILE *velocidade_RoboBola_tempo,FILE *aceleracao_RoboBola_tempo,double *velocidadeX,
-double *velocidadeY,double *aceleracaoX,double *aceleracaoY){
+double *velocidadeY,double *aceleracaoX,double *aceleracaoY,FILE *instrucoes_javascript){
   FILE *logs;
   logs = fopen(nome_arquivo, "a");
    //variável para a primeira interação da lista
@@ -326,10 +326,16 @@ double *velocidadeY,double *aceleracaoX,double *aceleracaoY){
   deslocamento_RoboBola = fopen("./graficos-arquivos-txt/grafico_deslocamento_RoboBola.txt","w");
   velocidade_RoboBola_tempo = fopen("./graficos-arquivos-txt/grafico_velocidade_RoboBola_tempo.txt","w");
   aceleracao_RoboBola_tempo = fopen("./graficos-arquivos-txt/aceleracao_RoboBola_tempo.txt","w");
+  instrucoes_javascript = fopen("./instrucoes-javascript.txt","w");
   int j=0;
+
 
   //iterage pela lista
   while(lista != NULL){ 
+
+
+    fprintf(instrucoes_javascript, "%.2lf %.2lf %.2lf %.2lf %.2lf\n", lista->tempo ,
+          lista->bolaX,lista->bolaY,lista->roboX,lista->roboY);
     //primeiro item
    if(primeira==0){
      //escreve no arquivo de logs
@@ -339,6 +345,7 @@ double *velocidadeY,double *aceleracaoX,double *aceleracaoY){
   fprintf(logs, "Posicao inicial do robo: %.2lf,%.2lf\n", lista->roboX, lista->roboY);
   fprintf(logs, "Posicao inicial da bola: %.2lf,%.2lf\n", lista->bolaX ,
           lista->bolaY );
+
   //monta as colunas e as 2 primeiras linhas de todos arquivos de graficos       
   //grafico deslocamento/tempo
   fprintf(deslocamento_tempo, "Tempo BolaX BolaY RoboX RoboY\n"); 

@@ -1708,3 +1708,103 @@ Instante de tempo: 3.50 s
 Velocidade total do robo no momento do encontro: 2.30000 m/s
 Distancia entre os dois no momento da interceptacao: 0.12
 ----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 2.99,4.99
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 1.95, Y: 1.35
+Posição da bola: X: 1.94, Y: 1.24
+Instante de tempo: 1.92 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.11
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.99,4.99
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.03, Y: 1.40
+Posição da bola: X: 2.01, Y: 1.29
+Instante de tempo: 2.06 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.11
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.15, Y: 1.50
+Posição da bola: X: 2.14, Y: 1.39
+Instante de tempo: 2.34 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.11
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.15, Y: 1.50
+Posição da bola: X: 2.14, Y: 1.39
+Instante de tempo: 2.34 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.11
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.15, Y: 1.50
+Posição da bola: X: 2.14, Y: 1.39
+Instante de tempo: 2.34 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.11
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.10, Y: 1.70
+Posição da bola: X: 2.10, Y: 1.36
+Instante de tempo: 2.24 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.35
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.10, Y: 1.70
+Posição da bola: X: 2.10, Y: 1.36
+Instante de tempo: 2.24 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.35
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.10, Y: 1.70
+Posição da bola: X: 2.10, Y: 1.36
+Instante de tempo: 2.24 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.35
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 0.85,0.80
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 0.85, Y: 0.80
+Posição da bola: X: 1.00, Y: 0.50
+Instante de tempo: 0.00 s
+Velocidade total do robo no momento do encontro: 0.03000 m/s
+Distancia entre os dois no momento da interceptacao: 0.34
+----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.10, Y: 1.70
+Posição da bola: X: 2.10, Y: 1.36
+Instante de tempo: 2.24 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.35
+----------------------------------------------------------------

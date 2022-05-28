@@ -1,6 +1,6 @@
 #ifndef BOLA_H
 #define BOLA_H
-#define raioBola 0.02
+#define raioBola 0.06
 #define MAX 1001
 #define PI_ 3.14159265358979323
 

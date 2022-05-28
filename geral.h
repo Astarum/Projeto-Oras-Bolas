@@ -16,7 +16,7 @@ double verifica_interceptacao_emY(double raioY,double *bolaY,double deslocaY,int
 void replaceVirgula(char*,char,char);
 void criar_logs(char*logs,no*lista,double inicioX,double inicioY,double *bolaX,double *bolaY,FILE *deslocamento_tempo,
 FILE *distancia_relativa,FILE *deslocamento_RoboBola,FILE *velocidade_RoboBola_tempo,FILE *aceleracao_RoboBola_tempo,double *velocidadeX,
-double *velocidadeY,double *aceleracaoX,double *aceleracaoY);
+double *velocidadeY,double *aceleracaoX,double *aceleracaoY, FILE *instrucoes_javascript);
 
 struct reg{
   double dist;

@@ -1,0 +1,185 @@
+body{
+    background-color: #8cdcf3;
+    text-align: center;
+
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/*título no topo da página*/
+h1{
+    font-size: 50pt;
+    font-family: 'Fredoka One', cursive;
+    color: white;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+canvas{
+    border: 2px solid black;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url("campo.jpeg");
+    background-size: 1255px 780px;
+    background-position:center;
+}
+.linhar{
+    display: flex;
+}
+.coluna{
+    flex: 33.33%;
+    padding: 5px;
+}
+div#sobreprojeto{
+    border: 2px solid black;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    background-color: #fae1d4;
+}
+
+#topoPagina{
+    width: 15%;
+    height: 200px;
+    background: rgba(255, 255, 255, 0);
+    float: left;
+}
+#topoPagina img{
+    max-height:100%; max-width:100%;
+}
+#titulo{
+
+    margin-left: 15%;
+    height: 200px;
+    background: rgba(0, 0, 0, 0);
+}
+#container{
+    width: 80%;
+    height: 200px;
+    background: rgba(0, 255, 255, 0);
+    margin-left: 60px;
+    padding: 10px;
+
+}
+
+#menu{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 2px;
+    padding: 0;
+
+}
+/*configurações do menu que existe nas 3 páginas*/
+#menu div{
+    background-color:white;
+    padding-left:10px;
+    padding-right:10px;
+    border: 2px solid;
+    border-color: #000300;
+    font-weight: bold ;
+    font-family: "Arial Black";
+    height: 50px;
+    width: 150px;
+    color: black;
+}
+
+#menu li{
+    padding-left: 10px;
+}
+#menu div:hover{
+    border-color: #1162ff;
+}
+#menu div:active{
+    background-color: #2555ff;
+}
+#menu a{
+    text-decoration: none;
+}
+div.animacao{
+    line-height: 50px;
+}
+div.sobreprojeto{
+    border: 2px solid black;
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    background-color: #fae1d4;
+}
+
+div.sobreprojeto{
+    width: 1000px;
+    height: auto;
+}
+.sobreprojeto h2{
+    margin-top: 0;
+    text-align: center;
+    font-size: 30pt;
+}
+.sobreprojeto p{
+    text-align: justify;
+    font-size: 18pt;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#corpocanvas{
+    width: 1400px;
+    height: 750px;
+
+    margin-left: 15%;
+    padding: 10px;
+
+}
+
+#meuCanvas{
+    width: 80.5%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    background-image: url("campo.jpeg");
+    background-size: 1255px 780px;
+    background-position:center;
+
+
+    float: left;
+}
+#escolher_arquivo{
+    width: 600px;
+}
+input{
+    width: 100px;
+    font-size: 25px;
+    font-family: 'Arial Black';
+    margin-left: 1%;
+
+
+
+
+}
+.botoes_interacao{
+    margin-top: 25%;
+    width: 200px;
+    float: right;
+
+}
+.botoes_interacao input{
+    padding-top: 5px;
+    width: 200px;
+    margin-bottom:20px;
+}
+.sobreprojeto h4{
+    text-align: left;
+    font-size: 25px;
+    margin-left: 30px;
+}
+

@@ -2,7 +2,7 @@
 #define ROBO_H
 #define velMax 2.3
 #define acel 1.5
-#define raioRobo 0.09
+#define raioRobo 0.28
 #define tempo_entre_dados 0.02
 
 typedef struct{
