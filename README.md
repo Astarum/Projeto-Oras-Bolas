@@ -10,3 +10,6 @@ Exemplo de gráficos gerados pelo algoritmo:
 
 
 ![distancia_relativa](https://user-images.githubusercontent.com/97410682/170841324-cca06d79-d7ee-4c0c-998a-4b795b269ef1.png)
+
+O programa registra no terminal algumas informações de cada instante de tempo
+![Code_CE7nj7yFg6](https://user-images.githubusercontent.com/97410682/170841408-dc51dcce-a0cd-493e-abe6-9e96be987a7d.png)
