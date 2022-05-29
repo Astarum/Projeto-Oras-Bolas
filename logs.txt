@@ -1808,3 +1808,13 @@ Instante de tempo: 2.24 s
 Velocidade total do robo no momento do encontro: 2.30000 m/s
 Distancia entre os dois no momento da interceptacao: 0.35
 ----------------------------------------------------------------
+Informacoes referentes ao encontro do robo com a bola
+--------------------------------------------------------------------
+Posicao inicial do robo: 3.00,5.00
+Posicao inicial da bola: 1.00,0.50
+Enconstou na bola na posicao: X: 2.10, Y: 1.70
+Posição da bola: X: 2.10, Y: 1.36
+Instante de tempo: 2.24 s
+Velocidade total do robo no momento do encontro: 2.30000 m/s
+Distancia entre os dois no momento da interceptacao: 0.35
+----------------------------------------------------------------
