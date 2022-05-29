@@ -1,0 +1,40 @@
+O programa aceita como entrada 2 dados na mesma linha, posição X e Y do robô, (tem que estar entre 0 e 9 e 0 e 6, respectivamente).
+
+Funcionamento da animação:
+	- Para a parte do site, no "escolher arquivo", selecionar o arquivo "instrucoes-javascript.txt";
+	- Para aumentar a velocidade da animação, clicar no botão iniciar de novo;
+	- Para pausar, clicar no botão pause (clicar de novo despausa).
+
+Problemas:
+	- Se colocar o arquivo errado, pressione F5 antes de inserir o correto;
+	- Para repetir a animação, pressione F5 e repita o processo do inicio.
+
+
+
+3 Structs -> Uma no arquivo bola.h, struct da bola; outra no arquivo robo.h; outra da lista ligada no arquivo geral.h
+
+3 Headers -> 1 para o robo, outro para a bola, e outro com funções gerais
+
+Leitura do arquivo -> linha 66 do main
+
+Variáveis define -> algumas nos headers
+
+Alocação dinâmica -> utilizada para as informações do arquivo
+
+
+GITHUB -> https://github.com/Astarum/Projeto-Oras-Bolas
+
+Gnuplot -> Por meio de scripts e arquivos txt's com os dados; gráficos são salvos como imagens na pasta "graficos"
+
+Logs -> logs.txt mostra as informações referentes ao momento da interceptação
+
+Integração HTML -> feita por meio do arquivo "instrucoes-javascript.txt" (Todos arquivos referentes ao site estão na pasta "ora bolas animacao")
+
+Apresentação visual por meio de gráficos -> pasta "graficos"
+
+Estruturas mais elaboradas -> Lista ligada - definida no geral.h e utilizada na linha 193 do funcoes.c. Método usado: Fila e com uso de recursão
+
+
+Integrantes do grupo:
+Cauê Iwamoto Meira, R.A: 22.221.039-5
+Thauan de Moraes Viana, R.A: 22.221.035-3
